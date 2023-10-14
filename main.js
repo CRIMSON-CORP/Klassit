@@ -17,4 +17,10 @@ function accordions() {
   });
 }
 
+function currentYear() {
+  document.getElementById("current-year").textContent =
+    new Date().getFullYear();
+}
+
 accordions();
+currentYear();
