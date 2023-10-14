@@ -2,6 +2,8 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import "./style.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function setSplitTypes() {
   const allWords = [];
   const allLines = [];
@@ -108,8 +110,20 @@ function headerAnimation() {
 }
 
 function heroAnimation() {
-  let timeline = gsap.timeline({ delay: 1 });
-  timeline
+  let timelineContent = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#hero-content-container",
+      start: "top center",
+    },
+  });
+  let timelineImage = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#hero-image-container",
+      start: "top center",
+    },
+  });
+
+  timelineContent
     .from("#hero span", { opacity: 0, y: 40 })
     .to("#hero h1 .word", {
       y: 0,
@@ -134,16 +148,14 @@ function heroAnimation() {
       "#hero button",
       { opacity: 1, y: 0, ease: "power3.out", duration: 2 },
       "-=0.75"
-    )
-    .to(
-      "g#hero-image",
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        ease: "power4.out()",
-        duration: 2,
-      },
-      "-=2.5"
-    )
+    );
+
+  timelineImage
+    .to("g#hero-image", {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      ease: "power4.out()",
+      duration: 2,
+    })
     .to(
       ".hero-image-popup",
       {
@@ -153,7 +165,7 @@ function heroAnimation() {
         ease: "back.out(2)",
         stagger: 0.25,
       },
-      "-=1.75"
+      "-=0.75"
     );
 }
 
