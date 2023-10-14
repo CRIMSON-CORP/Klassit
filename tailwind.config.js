@@ -1,28 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html'],
+  content: ["./index.html"],
   theme: {
     extend: {
       colors: {
-        primary: '#1E3E2B',
-        secondary: '#D0EA51',
-        tertiary: '#0BA94B'
+        primary: "#1E3E2B",
+        secondary: "#D0EA51",
+        tertiary: "#0BA94B",
       },
       fontFamily: {
-        'body': ['Open Sans', 'sans-serif'],
-        'eskell-small': ['Eskell Small', 'serif']
+        body: ["Open Sans", "sans-serif"],
+        "eskell-small": ["Eskell Small", "serif"],
+        inter: ["Inter", "sans-serif"],
       },
       zIndex: {
-        header: 10
-      }
+        header: 10,
+        cta: 9,
+      },
     },
     container: {
       center: true,
       padding: {
-        'DEFAULT': '20px',
-      }
-    }
+        DEFAULT: "20px",
+      },
+    },
   },
   plugins: [],
-}
-
+};
