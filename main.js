@@ -48,6 +48,9 @@ function setPositions() {
     "-=1"
   );
   gsap.set(".hero-image-popup", { scale: 0.5, opacity: 0 });
+  gsap.set("#services article", {
+    clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+  });
 }
 
 function accordions() {
@@ -169,6 +172,110 @@ function heroAnimation() {
     );
 }
 
+function servicesAnimation() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#services header",
+      start: "top 70%",
+    },
+  });
+
+  timeline
+    .to("#services header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from(
+      "#services header p",
+      {
+        y: 40,
+        opacity: 0,
+        stagger: { each: 0.05, from: "start" },
+        ease: "power3.out",
+        duration: 0.8,
+      },
+      "-=0.75"
+    );
+
+  const services = document.querySelectorAll("#services article");
+
+  services.forEach((service) => {
+    const serviceTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: service,
+        start: "top 70%",
+      },
+    });
+
+    serviceTimeline
+      .to(service, {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        ease: "power3.out()",
+        duration: 1,
+      })
+      .from(service.children, {
+        opacity: 0,
+        y: 80,
+        duration: 1.2,
+        ease: "power3.out()",
+        stagger: 0.15,
+      });
+  });
+}
+
+function whoCanUse() {
+  const headerTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#who-can-use header",
+      start: "top 60%",
+    },
+  });
+  const map = document.getElementById("map");
+  const mapLength = map.getTotalLength();
+
+  gsap.set(map, {
+    strokeDasharray: mapLength,
+    strokeDashoffset: mapLength,
+    stroke: "#DDE0E4",
+    fill: "transparent",
+    strokeWidth: 2,
+  });
+
+  headerTimeline
+    .to("#who-can-use header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from(
+      "#who-can-use header p",
+      {
+        y: 40,
+        opacity: 0,
+        stagger: { each: 0.05, from: "start" },
+        ease: "power3.out",
+        duration: 0.8,
+      },
+      "-=0.75"
+    );
+
+  gsap.to(map, {
+    strokeDashoffset: 0,
+    duration: 4,
+    ease: "power4.in()",
+    fill: "#DDE0E4",
+    scrollTrigger: {
+      trigger: map,
+      start: "top 60%",
+    },
+  });
+}
+
 setPositions();
 setSplitTypes();
 
@@ -178,3 +285,5 @@ toggleMobileNav();
 
 headerAnimation();
 heroAnimation();
+servicesAnimation();
+whoCanUse();
