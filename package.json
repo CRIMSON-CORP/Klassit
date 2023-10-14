@@ -15,6 +15,7 @@
     "autoprefixer": "^10.4.16",
     "gsap": "^3.12.2",
     "postcss": "^8.4.31",
+    "split-type": "^0.3.3",
     "tailwindcss": "^3.3.3"
   }
 }

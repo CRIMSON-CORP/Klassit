@@ -45,7 +45,7 @@
   .fancy-button {
     --ease: cubic-bezier(0.21, 0.67, 0.23, 1.02);
     --duration: 1000ms;
-    @apply p-1 sm:p-2 sm:pl-6 rounded-full flex items-center;
+    @apply p-3 sm:p-4 pl-4 sm:pl-6 rounded-full flex items-center;
   }
 
   .fancy-button > .text > .text-main,
@@ -67,7 +67,7 @@
   }
 
   .fancy-button div.text {
-    @apply grow px-2 sm:px-3 text-xl;
+    @apply grow px-2 sm:px-3 text-lg md:text-xl;
   }
 
   .fancy-button span.icon {
@@ -89,5 +89,11 @@
 @layer custom {
   #team article::before {
     @apply content-[''] absolute w-full h-full -z-[9] inset-0 bg-gradient-to-b from-transparent to-black/40;
+  }
+}
+
+@layer animation-preset {
+  g#hero-image {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
   }
 }
