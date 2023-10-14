@@ -73,4 +73,21 @@
   .fancy-button span.icon {
     @apply grid place-items-center rounded-full w-10 h-10 sm:w-14 sm:h-14;
   }
+
+  .accordion .content {
+    @apply max-h-0 overflow-hidden transition-all duration-500 ease-out;
+  }
+
+  .accordion button span:last-child {
+    @apply transition-transform duration-700 ease-out;
+  }
+  .accordion[data-accordion-open="true"] button span:last-child {
+    @apply rotate-[315deg];
+  }
+}
+
+@layer custom {
+  #team article::before {
+    @apply content-[''] absolute w-full h-full -z-[9] inset-0 bg-gradient-to-b from-transparent to-black/40;
+  }
 }
