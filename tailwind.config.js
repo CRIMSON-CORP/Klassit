@@ -15,7 +15,8 @@ export default {
       },
       zIndex: {
         header: 10,
-        cta: 9,
+        "mobile-nav": 9,
+        cta: 8,
       },
     },
     container: {
