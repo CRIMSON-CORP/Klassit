@@ -6,10 +6,14 @@ export default {
       colors: {
         primary: '#1E3E2B',
         secondary: '#D0EA51',
-        tertiary:'#0BA94B'
+        tertiary: '#0BA94B'
       },
       fontFamily: {
-        'body': ['Open Sans', 'sans-serif']
+        'body': ['Open Sans', 'sans-serif'],
+        'eskell-small': ['Eskell Small', 'serif']
+      },
+      zIndex: {
+        header: 10
       }
     },
     container: {

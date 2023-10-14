@@ -5,7 +5,71 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply font-body
-    }
+  body {
+    @apply font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-eskell-small;
+  }
+}
+
+@layer fonts {
+  @font-face {
+    font-family: Eskell Small;
+    src: url("/fonts/Eksell-Display-Small.otf");
+  }
+
+  @font-face {
+    font-family: Eskell Medium;
+    src: url("/fonts/Eskell-Display-Medium.otf");
+  }
+
+  @font-face {
+    font-family: Eskell large;
+    src: url("/fonts/Eskell-Display-large.otf");
+  }
+}
+
+@layer components {
+  .center {
+    @apply flex justify-center items-center;
+  }
+
+  .fancy-button {
+    --ease: cubic-bezier(0.21, 0.67, 0.23, 1.02);
+    --duration: 1000ms;
+    @apply p-1 sm:p-2 sm:pl-6 rounded-full flex items-center;
+  }
+
+  .fancy-button > .text > .text-main,
+  .fancy-button > .text > .text-under {
+    @apply translate-y-0 ease-[var(--ease)] duration-[var(--duration)];
+  }
+
+  .fancy-button:hover > .text > .text-main,
+  .fancy-button:hover > .text > .text-under {
+    @apply -translate-y-full ease-[var(--ease)] duration-[var(--duration)];
+  }
+
+  .fancy-button .background {
+    @apply ease-[var(--ease)] duration-[var(--duration)];
+  }
+
+  .fancy-button:hover .background {
+    @apply scale-y-100;
+  }
+
+  .fancy-button div.text {
+    @apply grow px-2 sm:px-3 text-xl;
+  }
+
+  .fancy-button span.icon {
+    @apply grid place-items-center rounded-full w-10 h-10 sm:w-14 sm:h-14;
+  }
 }
