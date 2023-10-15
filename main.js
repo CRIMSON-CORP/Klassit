@@ -147,8 +147,8 @@ function heroAnimation() {
   const underlineLength = underline.getTotalLength();
 
   gsap.set(underline, {
-    strokeDasharray: underlineLength,
-    strokeDashoffset: underlineLength,
+    strokeDasharray: `${Math.ceil(underlineLength)}px`,
+    strokeDashoffset: `${Math.ceil(underlineLength)}px`,
   });
 
   timelineContent
