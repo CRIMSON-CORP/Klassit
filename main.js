@@ -520,6 +520,30 @@ function groupClass() {
   });
 }
 
+function faq() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#faq header",
+      start: "top 60%",
+    },
+  });
+
+  timeline
+    .to("#faq header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from("#faq .accordion", {
+      scale: 0.5,
+      opacity: 0,
+      stagger: 0.125,
+      duration: 0.8,
+    });
+}
+
 initPackages();
 setPositions();
 setSplitTypes();
@@ -536,3 +560,4 @@ team();
 interaction();
 learnersEducators();
 groupClass();
+faq();
