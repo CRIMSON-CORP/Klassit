@@ -1,8 +1,18 @@
 import gsap from "gsap";
 import SplitType from "split-type";
+import Swiper from "swiper";
+import "swiper/css";
 import "./style.css";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function initPackages() {
+  new Swiper(".team-swiper", {
+    speed: 400,
+    spaceBetween: 10,
+    slidesPerView: "auto",
+  });
+}
 
 function setSplitTypes() {
   const allWords = [];
@@ -276,6 +286,48 @@ function whoCanUse() {
   });
 }
 
+function team() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#team header",
+      start: "top 70%",
+    },
+  });
+
+  timeline
+    .to("#team header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from(
+      "#team header p",
+      {
+        y: 40,
+        opacity: 0,
+        stagger: { each: 0.05, from: "start" },
+        ease: "power3.out",
+        duration: 0.8,
+      },
+      "-=0.75"
+    );
+
+  gsap.from(".team-swiper article", {
+    opacity: 0,
+    x: "30vw",
+    stagger: 0.125,
+    duration: 2,
+    ease: "expo.out()",
+    scrollTrigger: {
+      trigger: ".team-swiper",
+      start: "top 60%",
+    },
+  });
+}
+
+initPackages();
 setPositions();
 setSplitTypes();
 
@@ -287,3 +339,4 @@ headerAnimation();
 heroAnimation();
 servicesAnimation();
 whoCanUse();
+team();

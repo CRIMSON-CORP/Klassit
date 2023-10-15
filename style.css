@@ -97,3 +97,9 @@
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
   }
 }
+
+@layer swiper {
+  .team-swiper .swiper-slide {
+    @apply !w-[300px];
+  }
+}
