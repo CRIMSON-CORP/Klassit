@@ -389,6 +389,53 @@ function interaction() {
     );
 }
 
+function learnersEducators() {
+  const articles = document.querySelectorAll("#learners-educators article");
+
+  articles.forEach((article) => {
+    const sideImage = article.querySelector(".side-image");
+    const sideContent = article.querySelector(".side-content");
+
+    const sideContenttimeline = gsap.timeline({
+      scrollTrigger: { trigger: sideContent, start: "80% 80%" },
+    });
+
+    gsap.from(sideImage.children, {
+      scale: 0.5,
+      opacity: 0,
+      ease: "back.out(2)",
+      duration: 1,
+      stagger: 0.25,
+      scrollTrigger: { trigger: sideImage, start: "80% 80%" },
+    });
+
+    sideContenttimeline
+      .from(
+        sideContent.children[0],
+        {
+          y: 40,
+          opacity: 0,
+          ease: "power3.out",
+          duration: 0.8,
+        },
+        "-=0.75"
+      )
+      .to(sideContent.children[1].querySelectorAll(".word"), {
+        y: 0,
+        opacity: 1,
+        stagger: { each: 0.05, from: "start" },
+        ease: "power3.out",
+        duration: 0.8,
+      })
+      .from(sideContent.children[2], {
+        y: 40,
+        opacity: 0,
+        ease: "power3.out",
+        duration: 1,
+      });
+  });
+}
+
 initPackages();
 setPositions();
 setSplitTypes();
@@ -403,3 +450,4 @@ servicesAnimation();
 whoCanUse();
 team();
 interaction();
+learnersEducators();
