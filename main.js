@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 ScrollTrigger.normalizeScroll();
 
+let pageLoaded = false;
+
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
   content: "#smooth-content",
@@ -77,6 +79,17 @@ function setPositions() {
     scale: 0.5,
     opacity: 0,
   });
+  gsap.set("body header", { y: "-100%", opacity: 0 });
+  gsap.set("#hero span", { opacity: 0, y: 40 });
+  gsap.set("#loader-slider", { x: "-100%" });
+
+  const underline = document.getElementById("underline");
+  const underlineLength = underline.getTotalLength();
+
+  gsap.set(underline, {
+    strokeDasharray: `${Math.ceil(underlineLength)}px`,
+    strokeDashoffset: `${Math.ceil(underlineLength)}px`,
+  });
 }
 
 function accordions() {
@@ -128,8 +141,8 @@ function toggleMobileNav() {
 function headerAnimation() {
   const timeline = gsap.timeline();
   timeline
-    .from("header", { y: "-100%" })
-    .from("header > div>div>img, header > div > div > nav *", {
+    .to("body header", { y: 0, opacity: 1 })
+    .from("body header > div>div>img, header > div > div > nav *", {
       opacity: 0,
       x: "-100px",
       ease: "power3.out()",
@@ -154,16 +167,8 @@ function heroAnimation() {
     },
   });
 
-  const underline = document.getElementById("underline");
-  const underlineLength = underline.getTotalLength();
-
-  gsap.set(underline, {
-    strokeDasharray: `${Math.ceil(underlineLength)}px`,
-    strokeDashoffset: `${Math.ceil(underlineLength)}px`,
-  });
-
   timelineContent
-    .from("#hero span", { opacity: 0, y: 40 })
+    .to("#hero span", { opacity: 1, y: 0 })
     .to("#hero h1 .word", {
       y: 0,
       opacity: 1,
@@ -615,21 +620,92 @@ function joinWaitlist() {
     });
 }
 
-initPackages();
-setPositions();
-setSplitTypes();
+function main() {
+  accordions();
+  currentYear();
+  toggleMobileNav();
 
-accordions();
-currentYear();
-toggleMobileNav();
+  headerAnimation();
+  heroAnimation();
+  servicesAnimation();
+  whoCanUse();
+  team();
+  interaction();
+  learnersEducators();
+  groupClass();
+  faq();
+  joinWaitlist();
+}
 
-headerAnimation();
-heroAnimation();
-servicesAnimation();
-whoCanUse();
-team();
-interaction();
-learnersEducators();
-groupClass();
-faq();
-joinWaitlist();
+window.addEventListener("DOMContentLoaded", () => {
+  initPackages();
+  setPositions();
+  setSplitTypes();
+
+  loader();
+});
+
+function loader() {
+  const timeline = gsap.timeline({ delay: 0.25 });
+
+  const loader = document.querySelector("#loader svg");
+  const loaderProgressTimeline = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 0,
+    delay: 3,
+  });
+
+  timeline
+    .from(loader.children[0], {
+      scale: 0.5,
+      opacity: 0,
+      y: 50,
+      x: 30,
+      duration: 0.75,
+      ease: "back.out(2)",
+    })
+    .from(
+      loader.children[1],
+      {
+        scale: 0.5,
+        opacity: 0,
+        transformOrigin: "center center",
+        ease: "back.out(2)",
+      },
+      "-=0.25"
+    )
+    .from(Array.from(loader.children).slice(2), {
+      opacity: 0,
+      y: 30,
+      ease: "power3.out",
+      stagger: 0.125 / 1.5,
+      duration: 0.5,
+    });
+
+  loaderProgressTimeline
+    .to("#loader-slider", {
+      x: "90%",
+      ease: "expo.out",
+      duration: 1.5,
+      onComplete: () => {
+        let interval = null;
+        interval = setInterval(() => {
+          if (pageLoaded) {
+            loaderProgressTimeline.kill();
+            gsap.to("#loader", {
+              y: "-100%",
+              ease: "power3.out",
+              duration: 1,
+              onComplete: main,
+            });
+            clearInterval(interval);
+          }
+        }, 1000);
+      },
+    })
+    .to("#loader-slider", { x: "-90%", ease: "expo.out", duration: 1.5 });
+}
+
+window.addEventListener("load", () => {
+  pageLoaded = true;
+});
