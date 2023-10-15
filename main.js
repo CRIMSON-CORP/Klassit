@@ -143,6 +143,14 @@ function heroAnimation() {
     },
   });
 
+  const underline = document.getElementById("underline");
+  const underlineLength = underline.getTotalLength();
+
+  gsap.set(underline, {
+    strokeDasharray: underlineLength,
+    strokeDashoffset: underlineLength,
+  });
+
   timelineContent
     .from("#hero span", { opacity: 0, y: 40 })
     .to("#hero h1 .word", {
@@ -164,6 +172,11 @@ function heroAnimation() {
       },
       "-=0.5"
     )
+    .to(underline, {
+      strokeDashoffset: 0,
+      duration: 2,
+      ease: "expo.out",
+    })
     .to(
       "#hero button",
       { opacity: 1, y: 0, ease: "power3.out", duration: 2 },
