@@ -1937,7 +1937,7 @@
           </div>
         </div>
       </section>
-      <section id="group-class">
+      <section id="group-class" class="overflow-x-hidden">
         <div class="container">
           <div class="flex flex-col">
             <header class="text-center flex flex-col items-center gap-5">
@@ -2681,7 +2681,9 @@
       <section id="faq" class="pb-32">
         <div class="container !px-0 sm:px-5">
           <div class="flex flex-col gap-9 sm:gap-12 md:gap-16">
-            <header class="text-center flex flex-col items-center gap-5">
+            <header
+              class="container text-center flex flex-col items-center gap-5"
+            >
               <div class="flex flex-col">
                 <h2
                   class="split-word text-[43px] sm:text-5xl md:text-6xl lg:text-[70px] tracking-tighter"
@@ -2865,12 +2867,12 @@
         </div>
       </section>
     </main>
-    <footer class="bg-primary pt-36 pb-20">
+    <footer class="bg-primary sm:pt-36 py-20">
       <div class="container">
         <div class="flex flex-col gap-16 items-cenrer">
           <nav>
             <ul
-              class="flex justify-around items-baseline text-secondary text-lg font-light"
+              class="flex flex-col sm:flex-row flex-wrap justify-around items-start sm:items-baseline text-secondary md:text-lg font-light gap-10"
             >
               <a href="/about">About</a>
               <a href="/team">Team</a>
@@ -2882,7 +2884,9 @@
             </ul>
           </nav>
           <div class="flex flex-col gap-10">
-            <div class="flex items-center gap-2 justify-center">
+            <div
+              class="flex items-center gap-2 justify-start sm:justify-center"
+            >
               <a
                 href="/twitter"
                 class="aspect-square border-2 border-secondary rounded-md p-2 center"
@@ -2902,7 +2906,7 @@
                 <img src="/img/instagram.svg" alt="instagram logo" />
               </a>
             </div>
-            <p class="text-center text-secondary">
+            <p class="text-left sm:text-center text-secondary">
               All right reserved © <span id="current-year"></span>
             </p>
           </div>
