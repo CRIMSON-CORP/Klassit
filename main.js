@@ -64,6 +64,10 @@ function setPositions() {
   gsap.set("#services article", {
     clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
   });
+  gsap.set("#group-class > div > div svg .member-card", {
+    scale: 0.5,
+    opacity: 0,
+  });
 }
 
 function accordions() {
@@ -436,6 +440,86 @@ function learnersEducators() {
   });
 }
 
+function groupClass() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#group-class header",
+    },
+  });
+
+  const imageTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#group-class > div > div > svg",
+      start: "80% bottom",
+    },
+  });
+
+  timeline
+    .from(
+      "#group-class header span",
+      {
+        y: 40,
+        opacity: 0,
+        ease: "power3.out",
+        duration: 0.8,
+      },
+      "-=0.75"
+    )
+    .to("#group-class header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from("#group-class header p", {
+      y: 40,
+      opacity: 0,
+      ease: "power3.out",
+      duration: 1,
+    });
+
+  imageTimeline
+    .from("#group-class > div > div svg .background", {
+      opacity: 0,
+      scale: 0.8,
+      y: "50%",
+      ease: "back.out(1.5)",
+      duration: 0.8,
+    })
+    .from(
+      "#group-class > div > div svg .icons > *",
+      {
+        opacity: 0,
+        scale: 0.2,
+        y: 60,
+        ease: "back.out(2)",
+        stagger: 0.15,
+        duration: 0.5,
+      },
+      "-=0.5"
+    )
+    .to("#group-class > div > div svg .member-card", {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      ease: "back.out(2)",
+      stagger: 0.125 / 1.6,
+      duration: 0.8,
+    });
+
+  gsap.from("#group-class > div > div button", {
+    opacity: 0,
+    y: "100%",
+    ease: "power3.out",
+    duration: 2,
+    scrollTrigger: {
+      trigger: "#group-class > div > div > div",
+      start: "top 60%",
+    },
+  });
+}
+
 initPackages();
 setPositions();
 setSplitTypes();
@@ -451,3 +535,4 @@ whoCanUse();
 team();
 interaction();
 learnersEducators();
+groupClass();
