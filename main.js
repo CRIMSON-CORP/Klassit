@@ -544,6 +544,30 @@ function faq() {
     });
 }
 
+function joinWaitlist() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#join-waitlist",
+      start: "top center",
+    },
+  });
+
+  timeline
+    .to("#join-waitlist h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from("#join-waitlist button", {
+      y: "100%",
+      opacity: 0,
+      ease: "power3.out",
+      duration: 2,
+    });
+}
+
 initPackages();
 setPositions();
 setSplitTypes();
@@ -561,3 +585,4 @@ interaction();
 learnersEducators();
 groupClass();
 faq();
+joinWaitlist();
