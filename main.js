@@ -57,7 +57,10 @@ function setPositions() {
     { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
     "-=1"
   );
-  gsap.set(".hero-image-popup", { scale: 0.5, opacity: 0 });
+  gsap.set(".hero-image-popup, #interaction-image .pop-up", {
+    scale: 0.5,
+    opacity: 0,
+  });
   gsap.set("#services article", {
     clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
   });
@@ -327,6 +330,65 @@ function team() {
   });
 }
 
+function interaction() {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#interaction header",
+      start: "top 70%",
+    },
+  });
+
+  const interactionImageTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#interaction-image",
+      start: "top 70%",
+    },
+  });
+
+  timeline
+    .from(
+      "#interaction header span",
+      {
+        y: 40,
+        opacity: 0,
+        ease: "power3.out",
+        duration: 0.8,
+      },
+      "-=0.75"
+    )
+    .to("#interaction header h2 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .from("#interaction header p", {
+      y: 40,
+      opacity: 0,
+      ease: "power3.out",
+      duration: 1,
+    });
+
+  interactionImageTimeline
+    .to("#interaction-image g#main-image", {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      ease: "power4.out()",
+      duration: 2,
+    })
+    .to(
+      "#interaction-image .pop-up",
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        ease: "back.out(2)",
+        stagger: 0.25,
+      },
+      "-=0.75"
+    );
+}
+
 initPackages();
 setPositions();
 setSplitTypes();
@@ -340,3 +402,4 @@ heroAnimation();
 servicesAnimation();
 whoCanUse();
 team();
+interaction();

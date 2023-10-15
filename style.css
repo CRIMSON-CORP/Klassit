@@ -93,7 +93,8 @@
 }
 
 @layer animation-preset {
-  g#hero-image {
+  g#hero-image,
+  #interaction #interaction-image g#main-image {
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
   }
 }
