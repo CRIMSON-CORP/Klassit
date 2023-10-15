@@ -655,7 +655,7 @@ function loader() {
     delay: 3,
   });
 
-  gsap.set("#loader", { opacity: 1 });
+  gsap.set("#loader > div", { opacity: 1 });
 
   timeline
     .from(loader.children[0], {
