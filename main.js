@@ -136,10 +136,12 @@ function heroAnimation() {
       start: "top center",
     },
   });
+
   let timelineImage = gsap.timeline({
+    delay: 1.25,
     scrollTrigger: {
       trigger: "#hero-image-container",
-      start: "top center",
+      start: "center 90%",
     },
   });
 
@@ -172,11 +174,15 @@ function heroAnimation() {
       },
       "-=0.5"
     )
-    .to(underline, {
-      strokeDashoffset: 0,
-      duration: 2,
-      ease: "expo.out",
-    })
+    .to(
+      underline,
+      {
+        strokeDashoffset: 0,
+        duration: 2,
+        ease: "expo.out",
+      },
+      "-=1"
+    )
     .to(
       "#hero button",
       { opacity: 1, y: 0, ease: "power3.out", duration: 2 },
@@ -194,11 +200,11 @@ function heroAnimation() {
       {
         scale: 1,
         opacity: 1,
-        duration: 0.5,
-        ease: "back.out(2)",
-        stagger: 0.25,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        stagger: 0.125,
       },
-      "-=0.75"
+      "-=1.75"
     );
 }
 
@@ -246,13 +252,17 @@ function servicesAnimation() {
         ease: "power3.out()",
         duration: 1,
       })
-      .from(service.children, {
-        opacity: 0,
-        y: 80,
-        duration: 1.2,
-        ease: "power3.out()",
-        stagger: 0.15,
-      });
+      .from(
+        service.children,
+        {
+          opacity: 0,
+          y: 100,
+          duration: 2,
+          ease: "expo.out()",
+          stagger: 0.15,
+        },
+        "-=0.75"
+      );
   });
 }
 
@@ -265,6 +275,13 @@ function whoCanUse() {
   });
   const map = document.getElementById("map");
   const mapLength = map.getTotalLength();
+
+  const mapTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: map,
+      start: "top 60%",
+    },
+  });
 
   gsap.set(map, {
     strokeDasharray: mapLength,
@@ -294,16 +311,16 @@ function whoCanUse() {
       "-=0.75"
     );
 
-  gsap.to(map, {
-    strokeDashoffset: 0,
-    duration: 4,
-    ease: "power4.in()",
-    fill: "#DDE0E4",
-    scrollTrigger: {
-      trigger: map,
-      start: "top 60%",
-    },
-  });
+  mapTimeline
+    .to(map, {
+      strokeDashoffset: 0,
+      duration: 3,
+      ease: "expo.in()",
+    })
+    .to(map, {
+      fill: "#DDE0E4",
+      duration: 1.2,
+    });
 }
 
 function team() {
@@ -398,11 +415,11 @@ function interaction() {
       {
         scale: 1,
         opacity: 1,
-        duration: 0.5,
-        ease: "back.out(2)",
-        stagger: 0.25,
+        duration: 1,
+        ease: "back.out(1.2)",
+        stagger: 0.125,
       },
-      "-=0.75"
+      "-=1.5"
     );
 }
 
@@ -414,7 +431,7 @@ function learnersEducators() {
     const sideContent = article.querySelector(".side-content");
 
     const sideContenttimeline = gsap.timeline({
-      scrollTrigger: { trigger: sideContent, start: "80% 80%" },
+      scrollTrigger: { trigger: sideContent, start: "80% 95%" },
     });
 
     gsap.from(sideImage.children, {
@@ -423,7 +440,7 @@ function learnersEducators() {
       ease: "back.out(2)",
       duration: 1,
       stagger: 0.25,
-      scrollTrigger: { trigger: sideImage, start: "80% 80%" },
+      scrollTrigger: { trigger: sideImage, start: "80% 95%" },
     });
 
     sideContenttimeline
@@ -437,19 +454,27 @@ function learnersEducators() {
         },
         "-=0.75"
       )
-      .to(sideContent.children[1].querySelectorAll(".word"), {
-        y: 0,
-        opacity: 1,
-        stagger: { each: 0.05, from: "start" },
-        ease: "power3.out",
-        duration: 0.8,
-      })
-      .from(sideContent.children[2], {
-        y: 40,
-        opacity: 0,
-        ease: "power3.out",
-        duration: 1,
-      });
+      .to(
+        sideContent.children[1].querySelectorAll(".word"),
+        {
+          y: 0,
+          opacity: 1,
+          stagger: { each: 0.05, from: "start" },
+          ease: "power3.out",
+          duration: 0.8,
+        },
+        "-=0.5"
+      )
+      .from(
+        sideContent.children[2],
+        {
+          y: 40,
+          opacity: 0,
+          ease: "power3.out",
+          duration: 1,
+        },
+        "-=0.5"
+      );
   });
 }
 
@@ -463,7 +488,7 @@ function groupClass() {
   const imageTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#group-class > div > div > svg",
-      start: "80% bottom",
+      start: "70% bottom",
     },
   });
 
@@ -550,10 +575,10 @@ function faq() {
       duration: 0.8,
     })
     .from("#faq .accordion", {
-      scale: 0.5,
+      y: "100%",
       opacity: 0,
       stagger: 0.125,
-      duration: 0.8,
+      duration: 0.5,
     });
 }
 
