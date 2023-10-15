@@ -4,7 +4,16 @@ import Swiper from "swiper";
 import "swiper/css";
 import "./style.css";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+ScrollTrigger.normalizeScroll();
+
+ScrollSmoother.create({
+  wrapper: "#smooth-wrapper",
+  content: "#smooth-content",
+  smooth: 1.5,
+  effects: true,
+});
 
 function initPackages() {
   new Swiper(".team-swiper", {
