@@ -200,7 +200,7 @@ function heroAnimation() {
     .to(
       "#hero button",
       { opacity: 1, y: 0, ease: "power3.out", duration: 2 },
-      "-=0.75"
+      "-=1.5"
     );
 
   timelineImage
@@ -284,7 +284,8 @@ function whoCanUse() {
   const headerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#who-can-use header",
-      start: "top 60%",
+      start: "bottom 50%",
+      markers: true,
     },
   });
   const map = document.getElementById("map");
@@ -309,9 +310,9 @@ function whoCanUse() {
     .to("#who-can-use header h2 .word", {
       y: 0,
       opacity: 1,
-      stagger: { each: 0.05, from: "start" },
-      ease: "power3.out",
-      duration: 0.8,
+      stagger: { each: 0.08 },
+      ease: "back.out(1.4)",
+      duration: 1.5,
     })
     .from(
       "#who-can-use header p",
@@ -322,7 +323,7 @@ function whoCanUse() {
         ease: "power3.out",
         duration: 0.8,
       },
-      "-=0.75"
+      "-=0.25"
     );
 
   mapTimeline
