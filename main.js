@@ -285,7 +285,6 @@ function whoCanUse() {
     scrollTrigger: {
       trigger: "#who-can-use header",
       start: "bottom 50%",
-      markers: true,
     },
   });
   const map = document.getElementById("map");
