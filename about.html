@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+
+  <body>
+    <header
+      class="fixed w-full z-header bg-white/50 py-4 shadow-[0px_4px_100px_0px_rgba(0,0,0,0.10)] backdrop-blur-lg"
+    >
+      <div class="container">
+        <div class="flex items-center justify-between">
+          <img src="/img/logo.svg" alt="Klassit logo" />
+          <nav class="hidden sm:flex items-center gap-16">
+            <a href="/about" class="font-semibold text-primary"
+              >About Klassit</a
+            >
+            <button
+              class="px-6 py-4 rounded-full text-secondary bg-primary font-semibold"
+            >
+              Join the waitlist
+            </button>
+          </nav>
+          <button class="sm:hidden" id="hamburger-menu">
+            <img src="/img/hamburger-menu.svg" alt="hamburger menu button" />
+          </button>
+        </div>
+      </div>
+    </header>
+    <nav
+      id="mobile-nav"
+      class="sm:hidden sm:relative fixed w-screen sm:w-auto h-screen top-0 left-0 bg-white/20 backdrop-blur-md sm:h-auto z-mobile-nav pt-28"
+    >
+      <div class="container">
+        <div class="nav-items flex flex-col gap-5 items-start">
+          <a href="/about.html" class="font-semibold text-primary underline"
+            >About Klassit</a
+          >
+          <button
+            class="px-6 py-4 rounded-full text-secondary bg-primary font-semibold"
+          >
+            Join the waitlist
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main>
+          <section id="hero" class="py-48">
+            <div class="container">
+              <div class="flex items-center flex-col gap-1 text-center">
+                <span class="text-xl text-primary">THE KLASSIT STORY</span>
+                <h1 class="text-[104px] leading-none">
+                  Built for Learners <br />Built for Educators
+                </h1>
+              </div>
+            </div>
+          </section>
+          <section class="about py-16">
+            <div class="container">
+              <div class="mx-auto max-w-[1048px] text-lg text-primary">
+                <p>
+                  At Klassit, our compelling story is steeped in real-world
+                  experience, innovation, and the unwavering pursuit of
+                  educational excellence. Founded by a seasoned teacher and
+                  instructor, our platform has deep roots in the world of
+                  education.
+                </p>
+                <br />
+                <p>
+                  Our founder, with a wealth of experience nurturing and
+                  empowering creatives / entrepreneurs in the realms of design,
+                  strategy, branding, marketing, and creativity, embarked on a
+                  mission in 2018. This mission took shape as UU SERIES, an
+                  initiative that brought learners and experts together in
+                  dynamic in-person masterclasses.
+                </p>
+                <br />
+                <p>
+                  However, in 2020, the world changed dramatically with the
+                  onset of the pandemic. UU SERIES swiftly pivoted to offer
+                  online classes with dedicated instructors, adapting to the
+                  evolving educational landscape.
+                </p>
+                <br />
+                <p>
+                  Since inception of the UU SERIES, we've welcomed over 1000
+                  learners to our UU Series Masterclasses, both in-person and
+                  online.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section id="pictures">
+            <div
+              class="container md:max-w-none md:px-0 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-8 md:gap-y-14"
+            >
+              <div class="overflow-hidden rounded-br-[30px] aspect-[721/488]">
+                <div class="scale-125">
+                  <img
+                    src="/img/about-1.jpeg"
+                    alt="dark girl speaking"
+                    class="w-full"
+                    data-speed="1.2"
+                  />
+                </div>
+              </div>
+              <div class="overflow-hidden rounded-br-[30px] aspect-[721/488]">
+                <div class="scale-125">
+                  <img
+                    src="/img/about-2.jpeg"
+                    alt="fair girl speaking"
+                    class="w-full"
+                    data-speed="1.2"
+                  />
+                </div>
+              </div>
+              <div class="overflow-hidden rounded-br-[30px] aspect-[721/488]">
+                <div class="scale-125">
+                  <img
+                    src="/img/about-3.jpeg"
+                    alt="man in blue suit addressing people"
+                    class="w-full"
+                    data-speed="1.2"
+                  />
+                </div>
+              </div>
+              <div class="overflow-hidden rounded-br-[30px] aspect-[721/488]">
+                <div class="scale-125">
+                  <img
+                    src="/img/about-4.jpeg"
+                    alt="people taking a photo"
+                    class="w-full"
+                    data-speed="1.2"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="about pt-40 pb-64">
+            <div class="container">
+              <div class="mx-auto max-w-[1048px] text-lg text-primary">
+                <p>
+                  As a learner, Klassit is built with you in mind. It was
+                  spurred by the need to make finding and scheduling these
+                  beneficial one-on-one and group classes with knowledgeable
+                  instructors easy for you. We believe in the magic that happens
+                  when knowledge flows seamlessly and interaction exists between
+                  teacher and student.
+                </p>
+                <br />
+                <p>
+                  As an instructor on Klassit, our commitment goes beyond
+                  facilitating connections with learners. We are aware of the
+                  particular difficulties you face as an instructor when
+                  promoting your classes. By taking on that responsibility,
+                  Klassit guarantees that instructors' knowledge is promoted to
+                  a broad audience.
+                </p>
+                <br />
+                <p>
+                  Welcome to Klassit, where knowledge meets innovation and where
+                  we're committed to improving education one class at a time.
+                </p>
+                <br />
+                <p>
+                  Whatever it is,
+                  <span class="font-semibold italic">just Klass it.</span>
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="bg-primary sm:pt-36 py-20">
+          <div class="container">
+            <div class="flex flex-col gap-16 items-cenrer">
+              <nav>
+                <ul
+                  class="flex flex-col sm:flex-row flex-wrap justify-around items-start sm:items-baseline text-secondary md:text-lg font-light gap-10"
+                >
+                  <a href="/about">About</a>
+                  <a href="/team">Team</a>
+                  <a href="/pricing">Pricing</a>
+                  <a href="/resources">Resources</a>
+                  <a href="/careers">Careers</a>
+                  <a href="/Terms">Terms & Conditions</a>
+                  <a href="/privacy-policy">Privacy Policy</a>
+                </ul>
+              </nav>
+              <div class="flex flex-col gap-10">
+                <div
+                  class="flex items-center gap-2 justify-start sm:justify-center"
+                >
+                  <a
+                    href="/twitter"
+                    class="aspect-square border-2 border-secondary rounded-md p-2 center"
+                  >
+                    <img src="/img/twitter.svg" alt="twitter logo" />
+                  </a>
+                  <a
+                    href="/linkin"
+                    class="aspect-square border-2 border-secondary rounded-md p-2 center"
+                  >
+                    <img src="/img/linkedin.svg" alt="linkedin logo" />
+                  </a>
+                  <a
+                    href="/instagram"
+                    class="aspect-square border-2 border-secondary rounded-md p-2 center"
+                  >
+                    <img src="/img/instagram.svg" alt="instagram logo" />
+                  </a>
+                </div>
+                <p class="text-left sm:text-center text-secondary">
+                  All right reserved © <span id="current-year"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="/js/scroll-trigger.js"></script>
+    <script src="/js/smooth-scroll.js"></script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

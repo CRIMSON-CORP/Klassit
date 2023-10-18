@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 ScrollTrigger.normalizeScroll();
 
 let pageLoaded = false;
+const page = window.location.pathname.substring(1);
 
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
@@ -63,33 +64,36 @@ function setSplitTypes() {
 
 function setPositions() {
   gsap.set("#mobile-nav", { x: "100%" });
-  gsap.set(
-    "#hero button",
-    { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
-    "-=1"
-  );
-  gsap.set(".hero-image-popup, #interaction-image .pop-up", {
-    scale: 0.5,
-    opacity: 0,
-  });
-  gsap.set("#services article", {
-    clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-  });
-  gsap.set("#group-class > div > div svg .member-card", {
-    scale: 0.5,
-    opacity: 0,
-  });
-  gsap.set("body header", { y: "-100%", opacity: 0 });
-  gsap.set("#hero span", { opacity: 0, y: 40 });
-  gsap.set("#loader-slider", { x: "-100%" });
 
-  const underline = document.getElementById("underline");
-  const underlineLength = underline.getTotalLength();
+  if (page === "") {
+    gsap.set(
+      "#hero button",
+      { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
+      "-=1"
+    );
+    gsap.set(".hero-image-popup, #interaction-image .pop-up", {
+      scale: 0.5,
+      opacity: 0,
+    });
+    gsap.set("#services article", {
+      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+    });
+    gsap.set("#group-class > div > div svg .member-card", {
+      scale: 0.5,
+      opacity: 0,
+    });
+    gsap.set("body header", { y: "-100%", opacity: 0 });
+    gsap.set("#hero span", { opacity: 0, y: 40 });
+    gsap.set("#loader-slider", { x: "-100%" });
 
-  gsap.set(underline, {
-    strokeDasharray: `${Math.ceil(underlineLength)}px`,
-    strokeDashoffset: `${Math.ceil(underlineLength)}px`,
-  });
+    const underline = document.getElementById("underline");
+    const underlineLength = underline.getTotalLength();
+
+    gsap.set(underline, {
+      strokeDasharray: `${Math.ceil(underlineLength)}px`,
+      strokeDashoffset: `${Math.ceil(underlineLength)}px`,
+    });
+  }
 }
 
 function accordions() {
@@ -621,20 +625,24 @@ function joinWaitlist() {
 }
 
 function main() {
-  accordions();
-  currentYear();
+  console.log("main");
   toggleMobileNav();
 
-  headerAnimation();
-  heroAnimation();
-  servicesAnimation();
-  whoCanUse();
-  team();
-  interaction();
-  learnersEducators();
-  groupClass();
-  faq();
-  joinWaitlist();
+  if (page === "") {
+    accordions();
+    currentYear();
+
+    headerAnimation();
+    heroAnimation();
+    servicesAnimation();
+    whoCanUse();
+    team();
+    interaction();
+    learnersEducators();
+    groupClass();
+    faq();
+    joinWaitlist();
+  }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -642,7 +650,7 @@ window.addEventListener("DOMContentLoaded", () => {
   setPositions();
   setSplitTypes();
 
-  loader();
+  page === "" ? loader() : main();
 });
 
 function loader() {
