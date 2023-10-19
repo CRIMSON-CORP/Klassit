@@ -101,9 +101,16 @@ export function headerAnimation() {
     );
 }
 
+function currentYear() {
+  const span = document.getElementById("current-year");
+
+  if (span != undefined) span.textContent = new Date().getFullYear();
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   setPositions();
   setSplitTypes();
+  currentYear();
 });
 
 window.addEventListener("load", () => {

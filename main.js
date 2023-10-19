@@ -102,11 +102,6 @@ function accordions() {
   });
 }
 
-function currentYear() {
-  document.getElementById("current-year").textContent =
-    new Date().getFullYear();
-}
-
 function heroAnimation() {
   let timelineContent = gsap.timeline({
     scrollTrigger: {
@@ -578,7 +573,6 @@ function joinWaitlist() {
 
 function main() {
   accordions();
-  currentYear();
 
   headerAnimation();
   heroAnimation();
