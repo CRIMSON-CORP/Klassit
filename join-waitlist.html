@@ -49,7 +49,7 @@
     </nav>
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div class="grid lg:grid-cols-2 pt-40 lg:pt-0">
+        <div class="grid lg:grid-cols-2 pt-16 sm:pt-28 md:pt-40 lg:pt-0">
           <aside class="relative hidden lg:block">
             <img
               src="/img/join-waitlist-side-image.png"
@@ -68,11 +68,11 @@
                 class="flex flex-col gap-2 text-primary lg:max-w-[539px] mx-auto"
               >
                 <h1
-                  class="text-[40px] min-[370px]:text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-none"
+                  class="split-word text-[40px] min-[370px]:text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-none"
                 >
                   Built for Learners<br />Built for Educators
                 </h1>
-                <p>
+                <p class="split-line">
                   Join us today and secure your spot for exclusive early access
                 </p>
               </header>
@@ -81,11 +81,11 @@
                 class="lg:max-w-[477px] mx-auto flex flex-col gap-10 w-full"
               >
                 <div
-                  class="user-type relative items-center border border-primary bg-[#CCCCCC33]/20 rounded-md grid grid-cols-2 overflow-hidden isolate"
+                  class="user-type relative items-center border border-primary bg-[#CCCCCC33]/20 w-full rounded-md grid grid-cols-2 overflow-hidden isolate"
                 >
                   <label
                     for="instructor"
-                    class="relative w-full p-5 text-center cursor-pointer"
+                    class="relative w-full p-3.5 md:p-5 text-center cursor-pointer"
                   >
                     <input
                       type="radio"
@@ -96,13 +96,13 @@
                       class="absolute opacity-0 -translate-x-1/2 -translate-y-1/2 left-0 top-0 peer"
                     />
                     <span
-                      class="peer-checked:text-secondary text-primary transition-colors duration-500"
+                      class="peer-checked:text-secondary text-xs sm:text-sm md:text-base text-primary transition-colors duration-500"
                       >I'm an Instructor</span
                     >
                   </label>
                   <label
                     for="learner"
-                    class="relative w-full p-5 text-center cursor-pointer"
+                    class="relative w-full p-3.5 md:p-5 text-center cursor-pointer"
                   >
                     <input
                       type="radio"
@@ -112,7 +112,7 @@
                       class="absolute opacity-0 -translate-x-1/2 -translate-y-1/2 left-0 top-0 peer"
                     />
                     <span
-                      class="peer-checked:text-secondary text-primary transition-colors duration-500"
+                      class="peer-checked:text-secondary text-xs sm:text-sm md:text-base text-primary transition-colors duration-500"
                       >I'm a Learner</span
                     >
                   </label>
@@ -132,7 +132,7 @@
                         id="first-name"
                         name="first-name"
                         placeholder="Enter your first name"
-                        class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                        class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                       />
                     </div>
                     <div class="w-full flex flex-col gap-3.5 text-primary">
@@ -143,7 +143,7 @@
                         id="last-name"
                         name="last-name"
                         placeholder="Enter your Last name"
-                        class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                        class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                       />
                     </div>
                   </div>
@@ -157,7 +157,7 @@
                       id="email"
                       name="email"
                       placeholder="Please enter your email address"
-                      class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                      class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                     />
                     <span
                       id="email-error-helper"
@@ -172,7 +172,7 @@
                     <select
                       name="country"
                       id="country"
-                      class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                      class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                     >
                       <option value="" selected disabled>
                         Select your country
@@ -190,7 +190,7 @@
                       required
                       name="category"
                       id="category"
-                      class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                      class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                     >
                       <option value="" selected disabled>
                         Select klass category
@@ -209,7 +209,7 @@
                       id="what-to-learn"
                       name="what-to-learn"
                       placeholder="Please type what you desire to learn"
-                      class="bg-[#CCCCCC33]/20 border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
+                      class="bg-[#CCCCCC33]/20 w-full border-primary border py-3.5 px-3 rounded-md placeholder:text-primary/30"
                     />
                     <span
                       class="italic text-xs text-primary absolute -bottom-6 left-0"
@@ -218,20 +218,22 @@
                     >
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  id="form-submit-button"
-                  class="relative transition-all duration-500 p-4 bg-primary rounded-md w-full text-secondary font-semibold hover:scale-105 active:scale-100"
-                >
-                  <span class="text">Join the waitlist</span>
-                  <span
-                    class="absolute inline-block leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
+                <div>
+                  <button
+                    type="submit"
+                    id="form-submit-button"
+                    class="relative transition-all duration-500 p-4 bg-primary rounded-md w-full text-secondary font-semibold hover:scale-105 active:scale-100"
                   >
+                    <span class="text">Join the waitlist</span>
                     <span
-                      class="loader inline-block leading-none animate-spin w-5 h-5 border-4 border-t-transparent rounded-full"
-                    ></span>
-                  </span>
-                </button>
+                      class="absolute inline-block leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
+                    >
+                      <span
+                        class="loader inline-block leading-none animate-spin w-5 h-5 border-4 border-t-transparent rounded-full"
+                      ></span>
+                    </span>
+                  </button>
+                </div>
               </form>
             </div>
           </main>
@@ -306,6 +308,7 @@
     </div>
     <script src="/js/scroll-trigger.js"></script>
     <script src="/js/smooth-scroll.js"></script>
+    <script type="module" src="/common.js"></script>
     <script type="module" src="/main.js"></script>
     <script type="module" src="/join-waitlist.js"></script>
   </body>

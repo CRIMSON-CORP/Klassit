@@ -192,6 +192,43 @@ function closeWaitListmodal() {
     .to("#success-modal", { y: "100%", ease: "expo.out", duration: 1.5 });
 }
 
+function animation() {
+  const timeline = gsap.timeline({
+    delay: 1,
+  });
+
+  timeline
+    .to("header h1 .word", {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.05, from: "start" },
+      ease: "power3.out",
+      duration: 0.8,
+    })
+    .to(
+      "header .line",
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        ease: "power3.out",
+        duration: 1,
+        stagger: { each: 0.1, from: "start" },
+      },
+      "-=0.75"
+    )
+    .from(
+      "form > *",
+      {
+        opacity: 0,
+        y: "200%",
+        ease: "power3.out",
+        duration: 1,
+      },
+      "-=1"
+    );
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   loadCategories();
   loadCountries();
@@ -200,4 +237,6 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
   userChoiceIndicator();
   handleFormSubmit();
+
+  animation();
 });
