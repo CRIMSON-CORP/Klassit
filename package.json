@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
+    "firebase": "^10.5.0",
     "gsap": "^3.12.2",
     "postcss": "^8.4.31",
     "split-type": "^0.3.3",
