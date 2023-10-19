@@ -563,7 +563,7 @@ function joinWaitlist() {
       ease: "power3.out",
       duration: 0.8,
     })
-    .from("#join-waitlist button", {
+    .from("#join-waitlist a", {
       y: "100%",
       opacity: 0,
       ease: "power3.out",
