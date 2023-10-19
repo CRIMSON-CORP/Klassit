@@ -74,6 +74,7 @@ function loadCategories() {
     "Strategy",
     "Software",
     "Sales",
+    "Others",
   ];
 
   for (let catergory of categories) {
