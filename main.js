@@ -591,6 +591,8 @@ window.addEventListener("DOMContentLoaded", () => {
   setPositionsindex();
   setSplitTypes();
 
+  document.body.style.opacity = "1";
+
   loader();
 });
 
