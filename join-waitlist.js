@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { headerAnimation } from "./common";
 import FirebaseService from "./firebase";
 
 function userChoiceIndicator() {
@@ -218,12 +219,13 @@ function animation() {
       "-=0.75"
     )
     .from(
-      "form > *",
+      "form > :first-child, form > :last-child, form > :nth-child(2) > *",
       {
         opacity: 0,
         y: "200%",
         ease: "power3.out",
         duration: 1,
+        stagger: 0.125,
       },
       "-=1"
     );
@@ -235,6 +237,9 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
+
+  headerAnimation();
   userChoiceIndicator();
   handleFormSubmit();
 

@@ -102,6 +102,15 @@
     transform-box: fill-box;
     transform-origin: -50% -50% !important;
   }
+
+  #underline {
+    stroke-dashoffset: 208px;
+    stroke-dasharray: 208px;
+  }
+
+  .line {
+    white-space: nowrap;
+  }
 }
 
 @layer swiper {

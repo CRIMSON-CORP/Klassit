@@ -2,14 +2,13 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import Swiper from "swiper";
 import "swiper/css";
-import "./style.css";
+import { headerAnimation } from "./common";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 ScrollTrigger.normalizeScroll();
 
 let pageLoaded = false;
-const page = window.location.pathname.substring(1).split(".")[0];
 
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
@@ -62,38 +61,28 @@ function setSplitTypes() {
   gsap.set(allLines, { y: "100%", opacity: 0, scale: 0.8 });
 }
 
-function setPositions() {
+function setPositionsindex() {
   gsap.set("#mobile-nav", { x: "100%" });
 
-  if (page === "") {
-    gsap.set(
-      "#hero button",
-      { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
-      "-=1"
-    );
-    gsap.set(".hero-image-popup, #interaction-image .pop-up", {
-      scale: 0.5,
-      opacity: 0,
-    });
-    gsap.set("#services article", {
-      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-    });
-    gsap.set("#group-class > div > div svg .member-card", {
-      scale: 0.5,
-      opacity: 0,
-    });
-    gsap.set("body header", { y: "-100%", opacity: 0 });
-    gsap.set("#hero span", { opacity: 0, y: 40 });
-    gsap.set("#loader-slider", { x: "-100%" });
-
-    const underline = document.getElementById("underline");
-    const underlineLength = underline.getTotalLength();
-
-    gsap.set(underline, {
-      strokeDasharray: `${Math.ceil(underlineLength)}px`,
-      strokeDashoffset: `${Math.ceil(underlineLength)}px`,
-    });
-  }
+  gsap.set(
+    "#hero button",
+    { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
+    "-=1"
+  );
+  gsap.set(".hero-image-popup, #interaction-image .pop-up", {
+    scale: 0.5,
+    opacity: 0,
+  });
+  gsap.set("#services article", {
+    clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+  });
+  gsap.set("#group-class > div > div svg .member-card", {
+    scale: 0.5,
+    opacity: 0,
+  });
+  gsap.set("body header", { y: "-100%", opacity: 0 });
+  gsap.set("#hero span", { opacity: 0, y: 40 });
+  gsap.set("#loader-slider", { x: "-100%" });
 }
 
 function accordions() {
@@ -116,43 +105,6 @@ function accordions() {
 function currentYear() {
   document.getElementById("current-year").textContent =
     new Date().getFullYear();
-}
-
-function toggleMobileNav() {
-  const hamburgerMenu = document.querySelector("#hamburger-menu");
-
-  const timeline = gsap.timeline({ reversed: true, paused: true });
-
-  timeline.to("#mobile-nav", { x: 0 }).from("#mobile-nav .nav-items > *", {
-    opacity: 0,
-    y: 60,
-    duration: 1.25,
-    ease: "power3.out",
-    stagger: "0.15",
-  });
-
-  hamburgerMenu.onclick = () => {
-    if (timeline.reversed()) {
-      timeline.timeScale(1);
-      timeline.play();
-    } else {
-      timeline.timeScale(2);
-      timeline.reverse();
-    }
-  };
-}
-
-function headerAnimation() {
-  const timeline = gsap.timeline();
-  timeline
-    .to("body header", { y: 0, opacity: 1 })
-    .from("body header > div>div>img, header > div > div > nav *", {
-      opacity: 0,
-      x: "-100px",
-      ease: "power3.out()",
-      stagger: 0.15,
-      duration: 1.5,
-    });
 }
 
 function heroAnimation() {
@@ -624,67 +576,28 @@ function joinWaitlist() {
     });
 }
 
-function aboutHero() {
-  const timeline = gsap.timeline();
-
-  timeline.from("#hero span", { opacity: 0, y: "150%" }).to("#hero h1 .word", {
-    y: 0,
-    opacity: 1,
-    stagger: { each: 0.08 },
-    ease: "back.out(1.4)",
-    duration: 1.5,
-  });
-}
-
-function aboutContentTimeline() {
-  const paragraphs = document.querySelectorAll(".about p .line");
-
-  paragraphs.forEach((paragraph) => {
-    gsap.to(paragraph, {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      ease: "power3.out",
-      duration: 1,
-      stagger: { each: 0.1, from: "start" },
-      scrollTrigger: {
-        trigger: paragraph,
-        start: "bottom 80%",
-      },
-    });
-  });
-}
-
 function main() {
-  toggleMobileNav();
+  accordions();
+  currentYear();
+
   headerAnimation();
-
-  if (page === "") {
-    accordions();
-    currentYear();
-
-    heroAnimation();
-    servicesAnimation();
-    whoCanUse();
-    team();
-    interaction();
-    learnersEducators();
-    groupClass();
-    faq();
-    joinWaitlist();
-  }
-  if (page === "about") {
-    aboutHero();
-    aboutContentTimeline();
-  }
+  heroAnimation();
+  servicesAnimation();
+  whoCanUse();
+  team();
+  interaction();
+  learnersEducators();
+  groupClass();
+  faq();
+  joinWaitlist();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   initPackages();
-  setPositions();
+  setPositionsindex();
   setSplitTypes();
 
-  page === "" ? loader() : main();
+  loader();
 });
 
 function loader() {

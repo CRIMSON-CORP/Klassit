@@ -6,7 +6,7 @@ export default defineConfig({
       input: {
         index: "index.html",
         about: "about.html",
-        contact: "contact.html",
+        "join-wait-list": "join-wait-list.html",
         // Add more pages here if needed
       },
     },
