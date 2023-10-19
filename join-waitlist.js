@@ -187,7 +187,11 @@ function openWaitListModal() {
 }
 
 function closeWaitListmodal() {
-  const timeline = gsap.timeline();
+  const timeline = gsap.timeline({
+    onComplete() {
+      window.location.href = "/";
+    },
+  });
 
   timeline
     .to("#success-modal #modal-content", { scale: 0.7, opacity: 0 })
