@@ -65,7 +65,7 @@ function setPositionsindex() {
   gsap.set("#mobile-nav", { x: "100%" });
 
   gsap.set(
-    "#hero button",
+    "#hero a",
     { opacity: 0, y: "100%", ease: "power3.out", duration: 2 },
     "-=1"
   );
@@ -154,7 +154,7 @@ function heroAnimation() {
       "-=1"
     )
     .to(
-      "#hero button",
+      "#hero a",
       { opacity: 1, y: 0, ease: "power3.out", duration: 2 },
       "-=1.5"
     );
@@ -516,7 +516,7 @@ function groupClass() {
       duration: 0.8,
     });
 
-  gsap.from("#group-class > div > div button", {
+  gsap.from("#group-class > div > div a", {
     opacity: 0,
     y: "100%",
     ease: "power3.out",
