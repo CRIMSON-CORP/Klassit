@@ -341,7 +341,6 @@ function interaction() {
     scrollTrigger: {
       trigger: "#interaction-image",
       start: "top 20%",
-      markers: true,
     },
   });
 
