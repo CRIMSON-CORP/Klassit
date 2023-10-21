@@ -292,7 +292,7 @@ function team() {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#team header",
-      start: "top 70%",
+      start: "top 60%",
     },
   });
 
@@ -324,7 +324,7 @@ function team() {
     ease: "expo.out()",
     scrollTrigger: {
       trigger: ".team-swiper",
-      start: "top 60%",
+      start: "top 50%",
     },
   });
 }
@@ -333,14 +333,15 @@ function interaction() {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#interaction header",
-      start: "top 70%",
+      start: "top 60%",
     },
   });
 
   const interactionImageTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#interaction-image",
-      start: "top 70%",
+      start: "top 20%",
+      markers: true,
     },
   });
 
@@ -447,6 +448,7 @@ function groupClass() {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: "#group-class header",
+      start: "top 60%",
     },
   });
 
