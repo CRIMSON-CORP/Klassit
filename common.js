@@ -16,6 +16,9 @@ ScrollSmoother.create({
 function setPositions() {
   gsap.set("#mobile-nav", { x: "100%" });
   gsap.set("body header", { y: "-100%", opacity: 0 });
+
+  gsap.set("h1 .word, h2 .word, h3 .word, h4 .word", { y: "100%", opacity: 0 });
+  gsap.set("p .line", { y: "100%", opacity: 0, scale: 0.8 });
 }
 
 function setSplitTypes() {
@@ -49,10 +52,9 @@ function setSplitTypes() {
 
     allChars.push(...lines.chars);
   });
-
-  gsap.set(allWords, { y: "100%", opacity: 0 });
-  gsap.set(allLines, { y: "100%", opacity: 0, scale: 0.8 });
 }
+
+window.addEventListener("resize", setSplitTypes);
 
 function toggleMobileNav() {
   const hamburgerMenu = document.querySelector("#hamburger-menu");
@@ -108,8 +110,8 @@ function currentYear() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  setPositions();
   setSplitTypes();
+  setPositions();
   currentYear();
 });
 
