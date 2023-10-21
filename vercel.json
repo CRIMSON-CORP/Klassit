@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/about", "destination": "/dist/about.html" },
-    { "source": "/join-wait-list", "destination": "/dist/join-wait-list.html" },
-    { "source": "/(.*)", "destination": "/dist/index.html" }
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/join-wait-list", "destination": "/join-wait-list.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
