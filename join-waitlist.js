@@ -16,8 +16,6 @@ function initiIndicator() {
     : labels[1].getBoundingClientRect().left -
       form.getBoundingClientRect().left;
 
-  console.log(form.clientTop);
-
   indicator.style.height = `${height}px`;
   indicator.style.width = `${width}px`;
   indicator.style.opacity = `1`;
