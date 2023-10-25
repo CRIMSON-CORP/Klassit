@@ -2,22 +2,29 @@ import gsap from "gsap";
 import { headerAnimation } from "./common";
 import FirebaseService from "./firebase";
 
+const form = document.querySelector("form");
 const labels = document.querySelectorAll("form .user-type label");
 const indicator = document.getElementById("user-choice-indicator");
 
 function initiIndicator() {
-  const height = labels[0].clientHeight;
-  const width = labels[0].clientWidth;
+  const firstChecked = labels[0].children[0].checked;
+  const height = firstChecked ? labels[0].clientHeight : labels[1].clientHeight;
+  const width = firstChecked ? labels[0].clientWidth : labels[1].clientWidth;
+
+  const left = firstChecked
+    ? 0
+    : labels[1].getBoundingClientRect().left -
+      form.getBoundingClientRect().left;
+
+  console.log(form.clientTop);
 
   indicator.style.height = `${height}px`;
   indicator.style.width = `${width}px`;
   indicator.style.opacity = `1`;
-  indicator.style.left = `0px`;
+  indicator.style.left = `${left}px`;
 }
 
 function userChoiceIndicator() {
-  const form = document.querySelector("form");
-
   const instructorOnly = document.getElementById("instructor-only-field");
   const studentOnly = document.getElementById("student-only-field");
 
