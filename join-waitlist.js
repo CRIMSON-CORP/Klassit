@@ -26,7 +26,13 @@ function userChoiceIndicator() {
   const instructorOnly = document.getElementById("instructor-only-field");
   const studentOnly = document.getElementById("student-only-field");
 
+  const instructorOnlyInput = instructorOnly.querySelector("select");
+  const studentOnlyInput = studentOnly.querySelector("input");
+
   initiIndicator();
+
+  studentOnlyInput.removeAttribute("required");
+  studentOnlyInput.setAttribute("disabled", "true");
 
   labels.forEach((label) => {
     label.onclick = (e) => {
@@ -42,16 +48,20 @@ function userChoiceIndicator() {
 
       if (label.getAttribute("for") === "instructor") {
         instructorOnly.style.display = "flex";
-        studentOnly.style.display = "none";
+        instructorOnlyInput.setAttribute("required", "true");
+        instructorOnlyInput.removeAttribute("disabled");
 
-        instructorOnly.children[1].setAttribute("required", true);
-        studentOnly.children[1].removeAttribute("required");
+        studentOnly.style.display = "none";
+        studentOnlyInput.removeAttribute("required");
+        studentOnlyInput.setAttribute("disabled", "true");
       } else {
         instructorOnly.style.display = "none";
-        studentOnly.style.display = "flex";
+        instructorOnlyInput.removeAttribute("required");
+        instructorOnlyInput.setAttribute("disabled", "true");
 
-        instructorOnly.children[1].removeAttribute("required");
-        studentOnly.children[1].setAttribute("required", true);
+        studentOnly.style.display = "flex";
+        studentOnlyInput.setAttribute("required", "true");
+        studentOnlyInput.removeAttribute("disabled");
       }
     };
   });
@@ -127,6 +137,18 @@ async function handleFormSubmit() {
     try {
       const formData = new FormData(form);
       const email = formData.get("email");
+
+      const emptyValueExists = Array.from(formData.entries()).some(
+        (valueSet) =>
+          valueSet[1] === "" ||
+          valueSet[1] === null ||
+          valueSet[1] === undefined
+      );
+
+      if (emptyValueExists) {
+        alert("Please fill all values 🙏");
+        return;
+      }
 
       const result = await FirebaseService.validateEmail(email);
 
